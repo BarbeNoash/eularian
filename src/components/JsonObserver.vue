@@ -38,9 +38,7 @@ export default {
       <li>
         cart : <select name="cart" id="cart-select">
           <option value="">--Choisissez un fruit--</option>
-          <option value="apple">apple</option>
-          <option value="banana">banana</option>
-          <option value="coconut">coconut</option>
+          <option v-for="item in data.cart" :key="item" :value="item">{{ item }}</option>
         </select>
       </li>
       <li>null : <input v-model="avantDernier" :placeholder="data.null" /></li>
