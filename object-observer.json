@@ -1,0 +1,14 @@
+{
+  "firstname": "john",
+  "lastname": "doe",
+  "location": {
+    "address": {
+      "main": "lorem ipsum dolor sit amet",
+      "extra": "lorem ipsum dolor sit amet"
+    },
+    "zipcode": "XXXX"
+  },
+  "cart": ["apple", "banana", "coconut"],
+  "null": null,
+  "undefined": "undefined"
+}
