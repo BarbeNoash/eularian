@@ -9,7 +9,6 @@ export default {
   data() {
     return {
       data: objectData,
-      showChildren: false,
     };
   },
   computed: {
