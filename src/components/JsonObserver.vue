@@ -42,7 +42,7 @@ export default {
         </ul>
       </span>
       <span v-else-if="Array.isArray(node)">{{ nodeKey }} :
-        <select name="cart" id="cart-select" v-model="fruit">
+        <select :name="nodeKey" id="cart-select" v-model="fruit">
           <option value="">--Choisissez un fruit--</option>
           <option v-for="(fruit, key, index) in node" :key="index" :value="fruit">{{ fruit }}</option>
         </select>
