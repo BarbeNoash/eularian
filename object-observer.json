@@ -8,7 +8,11 @@
     },
     "zipcode": "XXXX"
   },
-  "cart": ["apple", "banana", "coconut"],
+  "cart": [
+    "apple",
+    "banana",
+    "coconut"
+  ],
   "null": null,
   "undefined": "undefined"
 }

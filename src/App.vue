@@ -9,18 +9,12 @@ export default {
   data() {
     return {
       data: objectData,
-      showLocation: false,
-      showAdress: false,
+      showChildren: false,
     };
   },
-  methods: {
-    showHide(eventType: string, elt: boolean) {
-      if (eventType === "showLocation") {
-        return (this.showLocation = !elt);
-      }
-      if (eventType === "showAdress") {
-        return (this.showAdress = !elt);
-      }
+  computed: {
+    nodes() {
+      return objectData;
     },
   },
 };
@@ -28,7 +22,7 @@ export default {
 
 <template>
   <div class="wrapper">
-    <JsonObserver :data="data" :showLocation="showLocation" :showAdress="showAdress" :showHide="showHide" />
+    <JsonObserver v-for="(node, key) in nodes" :key="key" :node="node" :nodeKey="key" />
   </div>
 </template>
 
