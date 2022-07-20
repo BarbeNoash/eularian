@@ -1,12 +1,22 @@
 <script lang="ts">
-import objectData from '../../object-observer.json'
-
 export default {
-  data() {
+  name: "JsonObserver",
+  props: {
+    data: Object,
+    showLocation: Boolean,
+    showAdress: Boolean,
+    showHide: Function,
+  },
+  data(props) {
     return {
-      data: objectData,
-      showLocation: false,
-      showAdress: false,
+      firstname: props.data.firstname,
+      lastname: props.data.lastname,
+      main: props.data.location.address.main,
+      extra: props.data.location.address.main,
+      zipcode: props.data.location.zipcode,
+      fruit: "XXXX",
+      avantDernier: props.data.null,
+      dernier: props.data.undefined,
     };
   },
 };
@@ -22,21 +32,22 @@ export default {
         lastname : <input v-model="lastname" :placeholder="data.lastname" />
       </li>
       <li>
-        location : <span v-if="showLocation" @click="showLocation = !showLocation">( - )</span><span v-else
-          @click="showLocation = !showLocation">( + )</span>
+        location : <span v-if="showLocation" @click="showHide('showLocation', showLocation)">( - )</span><span v-else
+          @click="showHide('showLocation', showLocation)">( + )</span>
         <ul v-if="showLocation">
-          <li>adress : <span v-if="showAdress" @click="showAdress = !showAdress">( - )</span><span v-else
-              @click="showAdress = !showAdress">( + )</span>
+          <li>adress : <span v-if="showAdress" @click="showHide('showAdress', showAdress)">( - )</span><span v-else
+              @click="showHide('showAdress', showAdress)">( + )</span>
             <ul v-if="showAdress">
               <li>main : <input v-model="main" :placeholder="data.location.address.main" /></li>
-              <li>extra : <input v-model="extra" :placeholder="data.location.address.extra" /></li>
+              <li>extra : <input v-model="extra" :placeholder="data.location.address.extra" />
+              </li>
             </ul>
           </li>
           <li>zipcode : <input v-model="zipcode" :placeholder="data.location.zipcode" /></li>
         </ul>
       </li>
       <li>
-        cart : <select name="cart" id="cart-select">
+        cart : <select name="cart" id="cart-select" v-model="fruit">
           <option value="">--Choisissez un fruit--</option>
           <option v-for="item in data.cart" :key="item" :value="item">{{ item }}</option>
         </select>
@@ -44,6 +55,12 @@ export default {
       <li>null : <input v-model="avantDernier" :placeholder="data.null" /></li>
       <li>undefined : <input v-model="dernier" :placeholder="data.undefined" /></li>
     </ul>
+  </div>
+  <div>
+    <h2>Mon nom est {{ firstname }}, {{ lastname }}</h2>
+    <p>J'habite a {{ main }}, {{ extra }}, {{ zipcode }}</p>
+    <h2>J'aime les {{ fruit }}</h2>
+    <h2>Mais aussi {{ avantDernier }}, {{ dernier }}</h2>
   </div>
 </template>
 

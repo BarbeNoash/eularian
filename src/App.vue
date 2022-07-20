@@ -1,11 +1,35 @@
-<script setup lang="ts">
-import JsonObserver from './components/JsonObserver.vue'
+<script lang="ts">
+import JsonObserver from "./components/JsonObserver.vue";
+import objectData from "../object-observer.json";
+
+export default {
+  components: {
+    JsonObserver,
+  },
+  data() {
+    return {
+      data: objectData,
+      showLocation: false,
+      showAdress: false,
+    };
+  },
+  methods: {
+    showHide(eventType: string, elt: boolean) {
+      if (eventType === "showLocation") {
+        return (this.showLocation = !elt);
+      }
+      if (eventType === "showAdress") {
+        return (this.showAdress = !elt);
+      }
+    },
+  },
+};
 </script>
 
 <template>
-    <div class="wrapper">
-      <JsonObserver/>
-    </div>
+  <div class="wrapper">
+    <JsonObserver :data="data" :showLocation="showLocation" :showAdress="showAdress" :showHide="showHide" />
+  </div>
 </template>
 
 <style scoped>
